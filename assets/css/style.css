@@ -854,38 +854,74 @@ body {
 /* ────────────────────────────────────────── */
 /* RESPONSIVE */
 /* ────────────────────────────────────────── */
+/* ────────────────────────────────────────── */
+/* MOBILE HEADER: Logo + Title di KIRI, Hamburger di KANAN */
+/* ────────────────────────────────────────── */
 
 @media (max-width: 768px) {
-  .hero-headline { font-size: 2.2rem; }
-  .hero-subheadline { font-size: 1.1rem; }
-  
-  .section { padding: 40px 0; }
-  .section-title { font-size: 1.8rem; }
+  .header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    gap: 0;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+  }
+
+  .site-title {
+    font-size: 1.4rem;
+    margin: 0;
+    white-space: nowrap;
+  }
 
   .nav-menu {
     position: fixed;
     top: 70px;
-    left: 0;
-    width: 100%;
+    right: 0;
+    width: 80%;
+    height: calc(100vh - 70px);
     background: var(--white);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    padding: 20px;
-    transform: translateY(-150%);
-    transition: transform 0.3s ease;
+    box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+    /* ─ transition: var(--transition); ─ */
+    transition: transform 0.4s ease-in-out, box-shadow 0.3s ease;
     z-index: 999;
+    transform: translateX(100%);
+    overflow-y: auto;    
   }
 
   .nav-menu.active {
-    transform: translateY(0);
+    transform: translateX(0);
+    box-shadow: -5px 0 20px rgba(0,0,0,0.15);
   }
 
   .nav-menu ul {
     flex-direction: column;
-    gap: 16px;
+    padding: 30px;
+    gap: 20px;
   }
 
   .hamburger {
     display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 6px;
+    z-index: 1000;
+  }
+
+  .hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-dark);
+    margin: 3px 0;
+    transition: var(--transition);
   }
 
   .hamburger.active span:nth-child(1) {
@@ -898,23 +934,12 @@ body {
     transform: rotate(-45deg) translate(5px, -5px);
   }
 
-  .hero-badges { flex-direction: column; align-items: center; }
-
-  .recommended-grid, .trust-grid, .problem-grid {
-    grid-template-columns: 1fr;
+  /* Optional: Atur lebar nav-menu agar tidak terlalu sempit */
+  @media (max-width: 480px) {
+    .nav-menu {
+      width: 90%;
+    }
   }
-
-  .whatsapp-float {
-    width: 50px;
-    height: 50px;
-    font-size: 24px;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero-headline { font-size: 1.8rem; }
-  .section-title { font-size: 1.6rem; }
-  .hero { padding: 60px 0; }
 }
 
 /* ────────── Update Multipage ────────────── */
